@@ -1,0 +1,379 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.ankus.mapreduce</groupId>
+    <artifactId>ankus</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1</version>
+    <modules>
+        <module>core</module>
+        <module>generate</module>
+    </modules>
+    <name>Ankus</name>
+    <description>Data Mining and Machine Learning Algorithms based MapReduce</description>
+    <url>http://sourceforge.net/projects/ankus/</url>
+    <inceptionYear>2013</inceptionYear>
+
+    <properties>
+        <!--  Project  -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <maven-jar-plugin>2.4</maven-jar-plugin>
+        <output.encoding>UTF-8</output.encoding>
+        <javadoc.locale>ko_KR</javadoc.locale>
+        <!--  Plugin  -->
+        <wagon.ftp>1.0-alpha-6</wagon.ftp>
+        <atlassian.clover2.plugin>3.1.2</atlassian.clover2.plugin>
+        <project.info.report.plugin>2.2</project.info.report.plugin>
+        <site.plugin.version>3.0-beta-2</site.plugin.version>
+        <clean.plugin.version>2.4.1</clean.plugin.version>
+        <compiler.plugin.version>2.3.2</compiler.plugin.version>
+        <surefire.plugin.version>2.8</surefire.plugin.version>
+        <checkstyle.plugin.version>2.6</checkstyle.plugin.version>
+        <pmd.plugin.version>2.5</pmd.plugin.version>
+        <jdepend.plugin.version>2.0-beta-2</jdepend.plugin.version>
+        <jxr.plugin.version>2.2</jxr.plugin.version>
+        <surefire.report.plugin.version>2.8</surefire.report.plugin.version>
+        <javadoc.plugin.version>2.7</javadoc.plugin.version>
+        <taglist.plugin.version>2.4</taglist.plugin.version>
+        <!--  Dependencies  -->
+        <hadoop.version>1.1.1</hadoop.version>
+        <pig.version>0.11.0</pig.version>
+        <log4j.version>1.2.16</log4j.version>
+        <slf4j.version>1.7.2</slf4j.version>
+        <slf4j.log4j12.version>1.6.4</slf4j.log4j12.version>
+        <commons.lang.version>2.5</commons.lang.version>
+        <commons.logging.version>1.1.1</commons.logging.version>
+        <commons.collections.version>3.2.1</commons.collections.version>
+        <commons.lang.version>2.5</commons.lang.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.plugin.version}</version>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.ankus.mapreduce.MapReduceDriver</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-clover2-plugin</artifactId>
+                <version>${atlassian.clover2.plugin}</version>
+                <configuration>
+                    <licenseLocation>${user.home}/clover.license</licenseLocation>
+                    <generateHistorical>true</generateHistorical>
+                    <historyDir>${user.home}/history/${project.artifactId}</historyDir>
+                    <generatePdf>true</generatePdf>
+                    <generateXml>true</generateXml>
+                    <generateHtml>true</generateHtml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${site.plugin.version}</version>
+                <configuration>
+                    <inputEncoding>${output.encoding}</inputEncoding>
+                    <outputEncoding>${output.encoding}</outputEncoding>
+                    <reportPlugins>
+                        <!--  Source Code Cross Reference Generation  -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-jxr-plugin</artifactId>
+                            <version>${jxr.plugin.version}</version>
+                            <configuration>
+                                <inputEncoding>${output.encoding}</inputEncoding>
+                                <outputEncoding>${output.encoding}</outputEncoding>
+                                <linkJavadoc>true</linkJavadoc>
+                                <stylesheet>${basedir}/src/javadoc/xref.css</stylesheet>
+                                <docTitle>${project.name} Source Xref (${project.version})</docTitle>
+                                <windowTitle>${project.name} Source Xref (${project.version})</windowTitle>
+                                <aggregate>true</aggregate>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-project-info-reports-plugin</artifactId>
+                            <version>${project.info.report.plugin}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-report-plugin</artifactId>
+                            <version>${surefire.report.plugin.version}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                            <version>${javadoc.plugin.version}</version>
+                            <configuration>
+                                <!--...-->
+                                <attach>false</attach>
+                                <stylesheetfile>${basedir}/src/javadoc/stylesheet.css</stylesheetfile>
+                                <javadocDirectory>${basedir}/src/javadoc</javadocDirectory>
+                                <docfilessubdirs>true</docfilessubdirs>
+                                <useStandardDocletOptions>true</useStandardDocletOptions>
+                                <charset>${output.encoding}</charset>
+                                <docencoding>${output.encoding}</docencoding>
+                                <breakiterator>true</breakiterator>
+                                <version>true</version>
+                                <author>true</author>
+                                <keywords>true</keywords>
+                                <overview>${basedir}/src/javadoc/overview.html</overview>
+                                <doctitle>${project.name} API Reference (${project.version})</doctitle>
+                                <windowtitle>${project.name} API Reference (${project.version})</windowtitle>
+                                <additionalparam>
+                                    -link http://download.oracle.com/javase/6/docs/api -link http://download.oracle.com/javaee/6/api -link http://www.slf4j.org/apidocs/ -link http://commons.apache.org/logging/commons-logging-1.1.1/apidocs/ -link http://logging.apache.org/log4j/1.2/apidocs/ -link http://static.springsource.org/spring/docs/3.0.x/javadoc-api/ -link http://commons.apache.org/io/apidocs -link http://junit.sourceforge.net/javadoc -link http://ehcache.org/apidocs
+                                </additionalparam>
+                                <encoding>${output.encoding}</encoding>
+                                <locale>${javadoc.locale}</locale>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-checkstyle-plugin</artifactId>
+                            <version>${checkstyle.plugin.version}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-pmd-plugin</artifactId>
+                            <version>${pmd.plugin.version}</version>
+                            <configuration>
+                                <linkXref>true</linkXref>
+                                <sourceEncoding>${output.encoding}</sourceEncoding>
+                                <minimumTokens>100</minimumTokens>
+                                <targetJdk>1.6</targetJdk>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>jdepend-maven-plugin</artifactId>
+                            <version>${jdepend.plugin.version}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>taglist-maven-plugin</artifactId>
+                            <version>${taglist.plugin.version}</version>
+                            <configuration>
+                                <tagListOptions>
+                                    <tagClasses>
+                                        <tagClass>
+                                            <displayName>Todo Work</displayName>
+                                            <tags>
+                                                <tag>
+                                                    <matchString>TODO</matchString>
+                                                    <matchType>exact</matchType>
+                                                </tag>
+                                                <tag>
+                                                    <matchString>FIXME</matchString>
+                                                    <matchType>exact</matchType>
+                                                </tag>
+                                            </tags>
+                                        </tagClass>
+                                    </tagClasses>
+                                </tagListOptions>
+                            </configuration>
+                        </plugin>
+                    </reportPlugins>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.plugin.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ftp</artifactId>
+                <version>${wagon.ftp}</version>
+            </extension>
+        </extensions>
+    </build>
+    <dependencies>
+
+        <!--  ========  -->
+        <!--   Hadoop   -->
+        <!--  ========  -->
+        <dependency>
+            <groupId>hadoop</groupId>
+            <artifactId>hadoop-core</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+
+        <!--  ========  -->
+        <!--   Pig   -->
+        <!--  ========  -->
+        <dependency>
+            <groupId>pig</groupId>
+            <artifactId>pig</artifactId>
+            <version>${pig.version}</version>
+        </dependency>
+
+        <!--  =============  -->
+        <!--   Logging API   -->
+        <!--  =============  -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons.logging.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.log4j12.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>antlr</groupId>
+            <artifactId>antlr</artifactId>
+            <version>2.7.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-el</groupId>
+            <artifactId>commons-el</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>${commons.collections.version}</version>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>release</id>
+            <name>Release Repository</name>
+            <url>http://www.openankus.org:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot</id>
+            <name>Snapshot Repository</name>
+            <url>http://www.openankus.org:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Ankus Maven Repository</name>
+            <url>http://www.openankus.org:8081/nexus/content/repositories/ankus/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>eclipselink</id>
+            <name>EclipseLink Repo</name>
+            <url>http://www.eclipse.org/downloads/download.php?r=1&amp;nf=1&amp;file=/rt/eclipselink/maven.repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>jstd-maven-plugin google code repo</id>
+            <url>http://jstd-maven-plugin.googlecode.com/svn/maven2</url>
+        </repository>
+        <repository>
+            <id>jsdoctk1</id>
+            <url>http://jsdoctk-plugin.googlecode.com/svn/repo</url>
+        </repository>
+    </repositories>
+
+    <issueManagement>
+        <system></system>
+        <url></url>
+    </issueManagement>
+    <organization>
+        <name>ONYCOM</name>
+        <url>http://www.onycom.com</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>moonie</id>
+            <name>WonMoon Song</name>
+            <roles>
+                <role>project leader</role>
+                <role>Committer</role>
+            </roles>
+            <url>https://www.facebook.com/mooniesong</url>
+            <email>mooniesong@gmail.com</email>
+        </developer>
+        <developer>
+            <id>develo</id>
+            <name>SuHyun Jeon</name>
+            <roles>
+                <role>developer</role>
+                <role>Committer</role>
+            </roles>
+            <url>https://www.facebook.com/womendevel</url>
+            <email>suhyunjun@gmail.com</email>
+        </developer>
+    </developers>
+</project>

@@ -42,15 +42,17 @@ OUR GOAL is, machine learning and data mining library on top of Apache Hadoop us
 
 ## Community
 
-Join community forum! https://www.facebook.com/groups/openankus
+Join community forum!   
+https://www.facebook.com/groups/openankus
 
-Join facebook page! https://www.facebook.com/openankus
+Join facebook page!  
+https://www.facebook.com/openankus
 
-See! It's wiki! (Manual and more detail) http://www.openankus.org/
+Only download jar files  
+https://sourceforge.net/projects/ankus/files/?source=navbar
 
-Only download jar files https://sourceforge.net/projects/ankus/files/?source=navbar
-
-Demo video http://youtu.be/gx8i4X82QfQ
+Demo video  
+http://youtu.be/gx8i4X82QfQ
 
 ## License
 Apache License 2.0  

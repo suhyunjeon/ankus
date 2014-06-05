@@ -37,7 +37,7 @@ OUR GOAL is, machine learning and data mining library on top of Apache Hadoop us
 4) Support attributes selection for analysis  
 
 ## Architecture  
-![Alt text](http://www.openankus.org/download/attachments/1736818/image2013-7-11%209-31-24.png?version=1&modificationDate=1375342093394&api=v2 "Ankus architecture")
+![Alt text](http://openankus.org/download/attachments/1736818/ankus-arch.png?version=1&modificationDate=1401947545601&api=v2 "Ankus architecture")
 
 
 ## Community

@@ -1,7 +1,7 @@
 # What is Ankus?  
 
 November 29, 2013  
-We released ankus 0.1 (branch : new_ankus-0.1)  
+We released ankus 0.1 (branch : ankus-0.1.RELEASE)  
 
 
 ## Official Release

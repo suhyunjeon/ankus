@@ -287,12 +287,12 @@
         <repository>
             <id>release</id>
             <name>Release Repository</name>
-            <url>http://192.168.2.100:8081/nexus/content/repositories/releases/</url>
+            <url>http://www.openankus.org:8081/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>snapshot</id>
             <name>Snapshot Repository</name>
-            <url>http://192.168.2.100:8081/nexus/content/repositories/snapshots/</url>
+            <url>http://www.openankus.org:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 

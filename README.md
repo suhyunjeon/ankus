@@ -21,7 +21,7 @@ Ankus is an open source data mining / machine learning based MapReduce that supp
 
 OUR GOAL is, machine learning and data mining library on top of Apache Hadoop using the map/reduce paradigm. And they are an open source project.
 
-## Supoort algorithms
+## Support algorithms
 
 1) Basic statistics computation for numeric/nominal data (3 methods)  
 2) Pre-processing (Normalization, 1 method)  

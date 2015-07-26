@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ankus.iml" filepath="$PROJECT_DIR$/ankus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ankus-core/ankus-core.iml" filepath="$PROJECT_DIR$/ankus-core/ankus-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ankus-generate/ankus-generate.iml" filepath="$PROJECT_DIR$/ankus-generate/ankus-generate.iml" />
+    </modules>
+  </component>
+</project>
+
